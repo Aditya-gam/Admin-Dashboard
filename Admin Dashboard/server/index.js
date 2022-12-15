@@ -13,6 +13,10 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+/* DATA IMPORTS */
+import User from "./models/User.js";
+import { dataUser } from "./data/index.js";
+
 mongoose.set("strictQuery", false);
 
 /* CONFIGURATION */
