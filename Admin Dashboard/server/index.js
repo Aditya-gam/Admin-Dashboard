@@ -45,5 +45,11 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB connection successful...."))
+  .then(() => {
+    console.log("MongoDB connection successful....");
+
+    /* INSERT DATA (RUN ONLY ONCE) */
+    // User.insertMany(dataUser);
+  })
+
   .catch((err) => console.log("MongoDB connection failed!!!", err.message));
