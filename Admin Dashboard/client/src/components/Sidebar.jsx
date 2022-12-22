@@ -93,7 +93,7 @@ const navItems = [
 ];
 
 const Sidebar = ({
-  //   user,
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -193,7 +193,7 @@ const Sidebar = ({
             </List>
           </Box>
 
-          {/* <Box position="absolute" bottom="2rem">
+          <Box position="absolute" bottom="2rem">
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
@@ -220,14 +220,16 @@ const Sidebar = ({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
-                sx={{
-                  color: theme.palette.secondary[300],
-                  fontSize: "25px ",
-                }}
-              />
+              <IconButton>
+                <SettingsOutlined
+                  sx={{
+                    color: theme.palette.secondary[300],
+                    fontSize: "25px ",
+                  }}
+                />
+              </IconButton>
             </FlexBetween>
-          </Box> */}
+          </Box>
         </Drawer>
       )}
     </Box>
