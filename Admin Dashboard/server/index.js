@@ -1,4 +1,3 @@
-/* IMPORT DEPENDANCIES */
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -6,18 +5,26 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-
-/* IMPORT ROUTES */
 import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
-/* DATA IMPORTS */
+// data imports
 import User from "./models/User.js";
-import { dataUser } from "./data/index.js";
-
-mongoose.set("strictQuery", false);
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
+import Transaction from "./models/Transaction.js";
+import OverallStat from "./models/OverallStat.js";
+import AffiliateStat from "./models/AffiliateStat.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataOverallStat,
+  dataAffiliateStat,
+} from "./data/index.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -38,18 +45,20 @@ app.use("/sales", salesRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
-
-app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`));
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("MongoDB connection successful....");
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-    /* INSERT DATA (RUN ONLY ONCE) */
+    /* ONLY ADD DATA ONE TIME */
+    // AffiliateStat.insertMany(dataAffiliateStat);
+    // OverallStat.insertMany(dataOverallStat);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
+    // Transaction.insertMany(dataTransaction);
     // User.insertMany(dataUser);
   })
-
-  .catch((err) => console.log("MongoDB connection failed!!!", err.message));
+  .catch((error) => console.log(`${error} did not connect`));
