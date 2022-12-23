@@ -31,7 +31,7 @@ import {
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-import profileImage from "../assets/Profile2.jpg";
+import profileImage from "assets/Profile2.jpg";
 
 const navItems = [
   {
@@ -220,14 +220,12 @@ const Sidebar = ({
                   {user.occupation}
                 </Typography>
               </Box>
-              <IconButton>
-                <SettingsOutlined
-                  sx={{
-                    color: theme.palette.secondary[300],
-                    fontSize: "25px ",
-                  }}
-                />
-              </IconButton>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "25px ",
+                }}
+              />
             </FlexBetween>
           </Box>
         </Drawer>
