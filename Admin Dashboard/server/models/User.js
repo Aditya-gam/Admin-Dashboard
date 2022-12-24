@@ -5,19 +5,20 @@ const UserSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      min: 2,
+      min: 3,
       max: 100,
     },
     email: {
       type: String,
       required: true,
-      max: 50,
+      max: 200,
       unique: true,
     },
     password: {
       type: String,
       required: true,
-      min: 5,
+      min: 3,
+      max: 1024,
     },
     city: String,
     state: String,
