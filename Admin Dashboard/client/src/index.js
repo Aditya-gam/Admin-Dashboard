@@ -7,7 +7,7 @@ import globalReducer from "state";
 import { Provider } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "state/api";
-import authReducer from "state/authSlice";
+import authReducer, { loadUser } from "state/authSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +18,8 @@ const store = configureStore({
   middleware: (getDefault) => getDefault().concat(api.middleware),
 });
 setupListeners(store.dispatch);
+
+store.dispatch(loadUser(null));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
