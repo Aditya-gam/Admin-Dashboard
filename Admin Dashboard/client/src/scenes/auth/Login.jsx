@@ -4,6 +4,7 @@ import { loginUser } from "state/authSlice";
 import { StyledForm } from "./StyledForm";
 import { useNavigate } from "react-router-dom";
 import Navbar from "components/Navbar";
+import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,25 @@ const Login = () => {
   });
   // console.log("🚀 ~ file: register.jsx:15 ~ Register ~ user", user);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(user));
+    try {
+      const token = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/login`,
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
+      localStorage.setItem("token", token.data);
+      window.location.href = "/dashboard";
+      // return token.data;
+    } catch (err) {
+      console.log(err.response.data);
+      // return rejectWithValue(err.response.data);
+    }
+
+    // dispatch(loginUser(user));
   };
 
   return (
