@@ -5,6 +5,18 @@ export const StyledForm = styled.form`
   width: 100%;
   margin: 2rem auto;
 
+  position: absolute;
+  top: 10%;
+  bottom: 33%;
+  left: 0;
+  right: 0;
+
+  div {
+    align-items: center;
+    /* display: flex; */
+    justify-content: center;
+  }
+
   h2 {
     margin-bottom: 1rem;
   }
@@ -37,6 +49,7 @@ export const StyledForm = styled.form`
 
     a {
       color: rgb(220, 220, 220);
+      font-size: 14px;
       text-align: center;
       width: 100%;
     }
