@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "state/authSlice";
 import { StyledForm } from "./StyledForm";
-import { useNavigate } from "react-router-dom";
-import Navbar from "components/Navbar";
+import { Link, useNavigate } from "react-router-dom";
+// import Navbar from "components/Navbar";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Register = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <StyledForm onSubmit={handleSubmit}>
         <h2>Register</h2>
@@ -100,6 +100,10 @@ const Register = () => {
         <button>
           {auth.registerStatus === "pending" ? "Submitting..." : "Register"}
         </button>
+
+        <p style={{ color: "white" }}>
+          Already have an account? <Link to="/login">Login</Link>{" "}
+        </p>
 
         {auth.registerStatus === "rejected" ? (
           <p>{auth.registerError}</p>
