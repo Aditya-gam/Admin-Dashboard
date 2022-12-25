@@ -32,6 +32,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "assets/Profile2.jpg";
+import { useSelector } from "react-redux";
 
 const navItems = [
   {
@@ -103,6 +104,7 @@ const Sidebar = ({
   const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -126,8 +128,13 @@ const Sidebar = ({
               width: drawerWidth,
             },
           }}
+          style={{
+            position: "relative",
+            height: "100%",
+            overflow: "auto",
+          }}
         >
-          <Box width="100%">
+          <Box width="100%" style={{ paddingBottom: "50px" }}>
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
@@ -193,9 +200,13 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box position="absolute" bottom="2rem">
+          <Box>
             <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <FlexBetween
+              textTransform="none"
+              gap="1rem"
+              m="1.5rem 2rem 0 1.5rem"
+            >
               <Box
                 component="img"
                 alt="profile"
@@ -211,13 +222,13 @@ const Sidebar = ({
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {user.name}
+                  {auth.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {user.occupation}
+                  {auth.occupation}
                 </Typography>
               </Box>
               <SettingsOutlined
