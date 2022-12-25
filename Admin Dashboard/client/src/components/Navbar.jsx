@@ -26,6 +26,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { logoutUser } from "state/authSlice";
+import { toast } from "react-toastify";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
@@ -35,7 +37,11 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+  const handleLogout = () => {
+    setAnchorEl(null);
+    dispatch(logoutUser(null));
+    toast.warning("Logged Out!!", { position: "bottom-left" });
+  };
 
   return (
     <AppBar
@@ -124,20 +130,27 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 <Menu
                   anchorEl={anchorEl}
                   open={isOpen}
-                  onClose={handleClose}
+                  onClose={handleLogout}
                   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                 >
-                  <Logout onClick={handleClose}>Logout</Logout>
+                  <Logout onClick={handleLogout}>Logout</Logout>
                 </Menu>
               </FlexBetween>
             </FlexBetween>
           </>
         ) : (
           <FlexBetween gap="1.5rem">
-            <AuthLinks>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </AuthLinks>
+            <FlexBetween>
+              <IconButton>
+                <MenuIcon />
+              </IconButton>
+            </FlexBetween>
+            <FlexBetween>
+              <AuthLinks>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+              </AuthLinks>
+            </FlexBetween>
           </FlexBetween>
         )}
       </Toolbar>
