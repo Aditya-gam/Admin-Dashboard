@@ -72,9 +72,10 @@ const authSlice = createSlice({
         return {
           ...state,
           token,
-          name: user.name,
-          email: user.email,
-          _id: user._id,
+          ...user,
+          // name: user.name,
+          // email: user.email,
+          // _id: user._id,
           userLoaded: true,
         };
       }
@@ -82,19 +83,20 @@ const authSlice = createSlice({
 
     logoutUser(state, action) {
       localStorage.removeItem("token");
+      window.location.href = "/login";
 
-      return {
-        ...state,
-        token: "",
-        name: "",
-        email: "",
-        _id: "",
-        registerStatus: "",
-        registerError: "",
-        loginStatus: "",
-        loginError: "",
-        userLoaded: false,
-      };
+      // return {
+      //   ...state,
+      //   token: "",
+      //   name: "",
+      //   email: "",
+      //   _id: "",
+      //   registerStatus: "",
+      //   registerError: "",
+      //   loginStatus: "",
+      //   loginError: "",
+      //   userLoaded: false,
+      // };
     },
   },
   extraReducers: (builder) => {
