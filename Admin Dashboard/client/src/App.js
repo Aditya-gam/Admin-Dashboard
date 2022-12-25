@@ -18,8 +18,8 @@ import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import Register from "scenes/auth/Register";
 import Login from "scenes/auth/Login";
-import jwtDecode from "jwt-decode";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// import jwtDecode from "jwt-decode";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 // import { useDispatch } from "react-redux";
 
 function App() {
