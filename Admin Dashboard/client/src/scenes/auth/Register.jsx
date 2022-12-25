@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "state/authSlice";
 import { StyledForm } from "./StyledForm";
 import { useNavigate } from "react-router-dom";
+import Navbar from "components/Navbar";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const Register = () => {
 
   return (
     <>
+      <Navbar />
+
       <StyledForm onSubmit={handleSubmit}>
         <h2>Register</h2>
         <input
