@@ -43,7 +43,7 @@ The admin dashboard prioritizes user-friendliness, providing an intuitive interf
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/your-username/admin-dashboard.git](https://github.com/Aditya-gam/Admin-Dashboard.git)
+   git clone https://github.com/Aditya-gam/Admin-Dashboard.git
    cd admin-dashboard
    ```
 
